@@ -18,18 +18,28 @@
                                 </div>
 
 
-                                                    <div class="col-md-4" >
-                                                        <label class="m-0 text-white" >Caissier:</label><br>
-                                                        <select class="customselect" id="user" name="user">
-                                                            <option value="" >Séléctionner un user:</option>
-                                                                <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                    <option
-                                                                        <?php if($_user==$user->id): ?> selected <?php endif; ?>
-                                                                     value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
-                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                        </select>
+                                <div class="col-md-2" >
+                                    <label class="m-0 text-white" >Caissier:</label><br>
+                                    <select class="customselect" id="user" name="user">
+                                        <option value="" >Séléctionner un user:</option>
+                                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option
+                                                    <?php if($_user==$user->id): ?> selected <?php endif; ?>
+                                                    value="<?php echo e($user->id); ?>"><?php echo e($user->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
 
-                                                    </div>
+                                </div>
+
+                                <div class="col-md-2" >
+                                    <label class="m-0 text-white" >Type:</label><br>
+                                    <select class="customselect" id="sexe" name="sexe">
+                                    <option value="" >Séléctionner un type:</option>
+                                    <option value="homme" <?php if($_sexe=="homme"): ?> selected <?php endif; ?> >Homme</option>
+                                    <option value="femme" <?php if($_sexe=="femme"): ?> selected <?php endif; ?> >Femme</option>
+                                    </select>
+
+                                </div>
 
                                 <div class="col-md-4" style="padding:35px;">
                                     <button type="submit" class="row btn bubbly-button" >

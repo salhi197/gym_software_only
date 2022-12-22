@@ -76,7 +76,7 @@
 
 
                                                     <div class="form-group">
-                                                        <label class="m-0 text-white" style="font-size:30px;">nom:</label>
+                                                        <label class="m-0 text-white" style="font-size:30px;">Type:</label>
                                                         <select class="customselect" class="" name="sexe">
                                                             <option value="homme">Homme</option>
                                                             <option value="femme">Femme</option>

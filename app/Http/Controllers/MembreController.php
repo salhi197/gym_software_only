@@ -25,7 +25,7 @@ class MembreController extends Controller
 {
     public function indexAjax()
     {
-        return view('membres.index-ajax');
+        return view('membres.index-ajax',compact('hommes','femmes'));
     }
 
 

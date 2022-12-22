@@ -89,6 +89,7 @@ class PresenceController extends Controller
         
         $presence->type = 1;
         $presence->prix = $request['prix'];        
+        $presence->sexe = $request['sexe'];        
         $presence->telephone = $request['telephone'];        
         $presence->nom_prenom = $request['nom_prenom'];        
     $presence->user=Auth::user()->id;

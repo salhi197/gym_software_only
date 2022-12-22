@@ -39,7 +39,7 @@
                                 @csrf
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputFirstName">{{trans('main.Genre')}}: </label>
-                                        <select class="customselect" name="genre" id="genre">
+                                        <select class="customselect" name="sexe" id="genre">
                                             <option value="homme">{{trans('main.Homme')}}</option>
                                             <option value="femme">{{trans('main.Femme')}}</option>
 
@@ -150,6 +150,18 @@
                             <div class="modal-body">
                             <form id="abonnementFform" action="{{route('assurance.create')}}" method="post" enctype="multipart/form-data">
                                 @csrf
+
+                                
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputFirstName">{{trans('main.Genre')}}: </label>
+                                        <select class="customselect" name="sexe" id="genre">
+                                            <option value="homme">{{trans('main.Homme')}}</option>
+                                            <option value="femme">{{trans('main.Femme')}}</option>
+
+                                        </select>
+                                    </div> 
+
+
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputFirstName">{{trans('main.Tarif')}}: </label>

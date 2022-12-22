@@ -102,7 +102,7 @@ class SettingController extends Controller
         return redirect()->route('setting.index')->with('success', 'Success ');        
     }
 
-        public function show($id_setting)
+    public function show($id_setting)
 
     {
         $setting = Setting::find($id_setting);
@@ -115,12 +115,6 @@ class SettingController extends Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_setting)
-    {
-        $setting = Setting::find($id_setting);
-        return view('settings.edit',compact('setting'));
-    }
-
     public function update(Request $request,$setting_id)
     {
         $setting = Setting::find($setting_id);  
@@ -132,17 +126,19 @@ class SettingController extends Controller
         return redirect()->route('setting.index')->with('success', 'reservation inséré avec succés ');   
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id_setting)
     {
         $setting = Setting::find($id_setting);
         $setting->delete();
         return redirect()->route('setting.index')->with('success', 'le Setting a été supprimé ');        
+    }
+
+
+    public function backup()
+    {
+        exec('php C:\wamp64\www\gymaccess\artisan backup:run --only-db');   
+        return redirect()->route('setting.index')->with('success', 'Sauvgarde Terminé');   
+    
     }
 
 

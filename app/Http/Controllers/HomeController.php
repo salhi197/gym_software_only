@@ -166,6 +166,7 @@ class HomeController extends Controller
         $beneficeLibres = Presence::where('membre',null)->sum('prix');
         $users = User::where('isadmin',2)->get();
         $_user = '';//User::where('isadmin',2)->get();
+        $_sexe = '';//User::where('isadmin',2)->get();
             
 
 
@@ -184,6 +185,7 @@ class HomeController extends Controller
             'beneficeLibres',
             'presences',
             'membres',
+            '_sexe',
             'countDecharges',
             'users',
             'presences',
@@ -231,15 +233,18 @@ class HomeController extends Controller
 
 
         if (!empty($request['user'])) {
-            $date_fin=$request['date_fin'];    
             $result = $result->where('user', '=', $request['user']);
             $result4 = $result4->where('user', '=', $request['user']);
             // $result3 = $result3->where('user', '=', $request['user']);//->where('assurance',1);
             $result2 = $result2->where('user', '=', $request['user'])->where('membre',null);
             $result5 = $result5->where('user', '=', $request['user']);
-
-
-  
+        }
+        if (!empty($request['sexe'])) {
+            $result = $result->where('sexe', '=', $request['sexe']);
+            $result4 = $result4->where('sexe', '=', $request['sexe']);
+            $result3 = $result3->where('sexe', '=', $request['sexe']);//->where('assurance',1);
+            $result2 = $result2->where('sexe', '=', $request['sexe'])->where('membre',null);
+            // $result5 = $result5->where('user', '=', $request['user']);
         }
 
         $inscriptions = $result->get();
@@ -264,10 +269,13 @@ class HomeController extends Controller
 
         $users = User::where('isadmin',2)->get();
         $_user = $request['user'];//User::where('isadmin',2)->get();
+        $_sexe = $request['sexe'];//User::where('isadmin',2)->get();
         return view('stats',compact('inscriptions',
             'date_debut',
             'assurances',
             '_user',
+            '_sexe',
+            
             'users',
             'libres',
             'assurancesSolde',
@@ -283,6 +291,10 @@ class HomeController extends Controller
         ));
 
     }
+
+
+
+    
     public function clear()
     {
         Storage::put('records.txt', '');

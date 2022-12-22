@@ -13,7 +13,9 @@
               <a href="{{route('membre.create')}}" class="btn bubbly-button btn-lg"><i class="fa fa-plus"></i> {{trans('main.ajouter')}}</a>
           </div><!-- /.col -->
           <div class="col-sm-6">
-              <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} : {{count($membres)}}<h1>
+          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} : {{count($membres)}}<h1>
+          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Homme : {{count($membres)}}<h1>
+          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Femme: {{count($membres)}}<h1>
           </div><!-- /.col -->
 
         </div><!-- /.row -->

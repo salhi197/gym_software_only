@@ -41,6 +41,7 @@ class AssuranceController extends Controller
         $assurance = new Assurance();
         
         $assurance->prix = $request['prix'];        
+        $assurance->sexe = $request['sexe'];        
         $assurance->telephone = $request['telephone'];        
         $assurance->nom_prenom = $request['nom_prenom'];        
     $assurance->user=Auth::user()->id;

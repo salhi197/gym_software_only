@@ -20,18 +20,28 @@
                                 </div>
 
 
-                                                    <div class="col-md-4" >
-                                                        <label class="m-0 text-white" >Caissier:</label><br>
-                                                        <select class="customselect" id="user" name="user">
-                                                            <option value="" >Séléctionner un user:</option>
-                                                                @foreach($users as $user)
-                                                                    <option
-                                                                        @if($_user==$user->id) selected @endif
-                                                                     value="{{$user->id}}">{{$user->name}}</option>
-                                                                @endforeach
-                                                        </select>
+                                <div class="col-md-2" >
+                                    <label class="m-0 text-white" >Caissier:</label><br>
+                                    <select class="customselect" id="user" name="user">
+                                        <option value="" >Séléctionner un user:</option>
+                                            @foreach($users as $user)
+                                                <option
+                                                    @if($_user==$user->id) selected @endif
+                                                    value="{{$user->id}}">{{$user->name}}</option>
+                                            @endforeach
+                                    </select>
 
-                                                    </div>
+                                </div>
+
+                                <div class="col-md-2" >
+                                    <label class="m-0 text-white" >Type:</label><br>
+                                    <select class="customselect" id="sexe" name="sexe">
+                                    <option value="" >Séléctionner un type:</option>
+                                    <option value="homme" @if($_sexe=="homme") selected @endif >Homme</option>
+                                    <option value="femme" @if($_sexe=="femme") selected @endif >Femme</option>
+                                    </select>
+
+                                </div>
 
                                 <div class="col-md-4" style="padding:35px;">
                                     <button type="submit" class="row btn bubbly-button" >

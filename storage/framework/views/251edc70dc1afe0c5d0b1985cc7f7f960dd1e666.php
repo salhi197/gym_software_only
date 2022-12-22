@@ -38,7 +38,7 @@
                                 <?php echo csrf_field(); ?>
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputFirstName"><?php echo e(trans('main.Genre')); ?>: </label>
-                                        <select class="customselect" name="genre" id="genre">
+                                        <select class="customselect" name="sexe" id="genre">
                                             <option value="homme"><?php echo e(trans('main.Homme')); ?></option>
                                             <option value="femme"><?php echo e(trans('main.Femme')); ?></option>
 
@@ -151,6 +151,18 @@
                             <div class="modal-body">
                             <form id="abonnementFform" action="<?php echo e(route('assurance.create')); ?>" method="post" enctype="multipart/form-data">
                                 <?php echo csrf_field(); ?>
+
+                                
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputFirstName"><?php echo e(trans('main.Genre')); ?>: </label>
+                                        <select class="customselect" name="sexe" id="genre">
+                                            <option value="homme"><?php echo e(trans('main.Homme')); ?></option>
+                                            <option value="femme"><?php echo e(trans('main.Femme')); ?></option>
+
+                                        </select>
+                                    </div> 
+
+
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="inputFirstName"><?php echo e(trans('main.Tarif')); ?>: </label>

@@ -17,6 +17,7 @@
         "nexmo/client": "^2.4",
         "oksweb/sms-api-php": "^1.0",
         "simplesoftwareio/simple-qrcode": "~4",
+        "spatie/laravel-backup": "^5.0.0",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {

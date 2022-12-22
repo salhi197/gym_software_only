@@ -8,6 +8,7 @@ Route::get('/code', function(){
 
 Route::post('/write', 'HomeController@write')->middleware('auth')->name('write');
 Route::get('/clear/records', 'HomeController@clear')->middleware('auth')->name('clear.records');
+Route::get('/backup', 'SettingController@backup')->middleware('auth')->name('backup');
 Route::get('/open', 'SettingController@open')->middleware('auth')->name('open');
 // Route::get('/format', 'HomeController@format')->middleware('auth')->name('format');
 Route::post('/write2', 'HomeController@write2')->name('write2');

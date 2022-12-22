@@ -111,6 +111,11 @@ return [
         ],
 
 
+        'partitionE' => [
+            'driver' => 'local',
+            'root'   => 'E:/',
+        ],
+
 
         's3' => [
 

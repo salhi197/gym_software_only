@@ -33,10 +33,10 @@
                                                     <input type="date" name="date_fin" value="{{$date_fin ?? ''}}" class="form-control">
                                                 </div>                                     
                                             </div>
-                                            <!-- <div class="col-md-3">
+                                            <div class="col-md-3">
                                                 <div class="form-group">
                                                     <label>Date Fin</label>
-                                                    <select class='form-control stocks' name='_designation' id="_designation" >
+                                                    <select class="customselect" name='_designation' id="_designation" >
                                                         <option value="" >Désignation</option>                    
                                                         @foreach($_designations as $_designation)
                                                         <option value="{{$_designation}}">
@@ -45,7 +45,7 @@
                                                         @endforeach 
                                                     </select>
                                                 </div>                                     
-                                            </div> -->
+                                            </div>
                                             <div class="col-sm-2">
                                                 <label>&nbsp;</label>
                                                 <button type="submit" id="valider" class="btn bubbly-button btn-block">{{ trans('main.filter') }}</button>

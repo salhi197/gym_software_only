@@ -13,7 +13,7 @@ use App\Setting;
         <div class="col-lg-12 table1">
             <div class="card mt-2 ">
                 <div class="card-header">
-                    <h3 class="font-weight-light my-4"> {{ trans('main.Paramètre de application') }}</h3>
+                    <h3 class="font-weight-light my-4"> Paramètre de application</h3>
                 </div>
                 <div class="card-body">
                     <form role="form" action="{{route('setting.store')}}" method="post" enctype="multipart/form-data">
@@ -23,15 +23,15 @@ use App\Setting;
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>
-                                        {{ trans('main.Communication Port Com') }}:
+                                        Communication Port Com:
                                     </label>
                                     @if($connexion == 1)
                                     <span class="badge badge-success">
-                                        {{ trans('main.Connecté') }}
+                                        Connecté
                                     </span>
                                     @else
                                     <span class="badge badge-danger">
-                                        {{ trans('main.Non Connecté') }}
+                                        Non Connecté
                                     </span>
 
                                     @endif
@@ -48,13 +48,13 @@ use App\Setting;
                                     </a>
                                 </div>
                                 <div class="form-group">
-                                    <label>{{ trans('main.Titre Général') }} :</label>
+                                    <label>Titre Général:</label>
                                     <input type="text" required value="{{Setting::getSetting('titre')}}" name="titre"
                                         class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>{{ trans('main.Titre Général') }}</label>
+                                    <label>Titre Général:</label>
                                     <input type="text" value="{{Setting::getSetting('telephone')}}" name="telephone"
                                         class="form-control">
                                 </div>
@@ -85,6 +85,11 @@ use App\Setting;
                                     </a>
                                 </div>
 
+                                <div class="form-group">
+                                    <a href="{{route('backup')}}" class="btn  bubbly-button">
+                                        Sauvgarder Les Données
+                                    </a>
+                                </div>
 
 
 
