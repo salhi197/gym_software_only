@@ -219,7 +219,7 @@ class MembreController extends Controller
         $inscription = new Inscription();
         // ::find($['inscription']);
         $inscription->debut=$request['debut'];
-        //$inscription->remarque=$request['remarque'];
+        $inscription->sexe=$request['sexe'];
         $inscription->type=$request['type'];
         $activities = $request->input('activities');
         $inscription->activities=json_encode($activities);
