@@ -1,6 +1,4 @@
-@extends('layouts.profile')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
         <div class="container emp-profile  table2 membreProfile "
             style="margin-top:-4%;"
         >
@@ -8,11 +6,11 @@
                 <div class="row " >
                     <div class="col-md-4" style="text-align:center;">
                         <div class="profile-img">
-                            @if(strlen($membre->photo)>0)
-                            <img src="{{asset($membre->photo)}}" width="400px" alt=""/>
-                            @else
-                            <img src="{{asset('profile.png')}}" width="400px" alt=""/>
-                            @endif
+                            <?php if(strlen($membre->photo)>0): ?>
+                            <img src="<?php echo e(asset($membre->photo)); ?>" width="400px" alt=""/>
+                            <?php else: ?>
+                            <img src="<?php echo e(asset('profile.png')); ?>" width="400px" alt=""/>
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-md-6 pad-20">
@@ -22,11 +20,11 @@
                                     <div class='corner2'></div>
                                     <div class='corner2'></div>
                                     <h5 style="text-align:center;">
-                                        {{$membre->nom}} 
+                                        <?php echo e($membre->nom); ?> 
                                     </h5>
                                     <h5 style="text-align:center;">
 
-                                        {{$membre->prenom}} 
+                                        <?php echo e($membre->prenom); ?> 
                                     </h5>
                                     <p style="text-align:center;">
 
@@ -59,7 +57,7 @@
                         </div>
                     </div>
                     <!-- <div class="col-md-2 editbutton">
-                        <a href="{{route('membre.edit',['membre'=>$membre->matricule])}}"  class="bubbly-button">
+                        <a href="<?php echo e(route('membre.edit',['membre'=>$membre->matricule])); ?>"  class="bubbly-button">
                             Modifier 
                         </a>
                     </div> -->
@@ -77,20 +75,20 @@
                         <div class="tab-content profile-tab " id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
-                                            @if($inscription->abonnement != 1)                                               
+                                            <?php if($inscription->abonnement != 1): ?>                                               
                                             <div class="col-md-6">
                                                 <label>Il Vous Reste: </label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p style="font-size:40px;
-                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center"> {{$inscription->reste ?? ''}} <label>Séances</label></p>
+                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center"> <?php echo e($inscription->reste ?? ''); ?> <label>Séances</label></p>
                                             </div>
-                                            @else
+                                            <?php else: ?>
                                             <div class="col-md-12">
                                                 <p style="font-size:40px;
                                                 font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center"> Accées Libre </p>
                                             </div>
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -98,7 +96,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <h5 style="font-size:40px;
-                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center">{{$inscription->debut}}</h5>
+                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center"><?php echo e($inscription->debut); ?></h5>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -107,7 +105,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <h5 style="font-size:40px;
-                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center">{{$inscription->fin}}</h5>
+                                                font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center"><?php echo e($inscription->fin); ?></h5>
                                             </div>
                                         </div>
 
@@ -119,7 +117,7 @@
                                                 <h5 style="font-size:40px;
                                                 font-family:'Orbitron', sans-serif !important;" class="text-white mb-1 font-weight-medium text-center">
 
-                                                    {{$inscription->total-$inscription->versement}} DA                                                
+                                                    <?php echo e($inscription->total-$inscription->versement); ?> DA                                                
                                                     
                                                 </h5>
                                             </div>
@@ -133,10 +131,11 @@
                 </div>
             </form>           
         </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
+<?php $__env->startSection('scripts'); ?>
 <script type="text/javascript">
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.profile', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

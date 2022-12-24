@@ -134,6 +134,9 @@
                                                         <input type="number"  value="<?php echo e(old('nbrmois') ?? 1); ?>" min="1"  id="nbrmois" name="nbrmois" class="form-control">
                                                     </div>
 
+
+
+
                                                     <!-- <div class="form-group">
                                                         <label class="m-0 text-white" style="font-size:30px;">Coach:</label><br>
                                                         <select class="customselect" id="coach" name="coach">
@@ -322,13 +325,13 @@ $(window).keydown(function(event){
 
 
     $('.basic-single').select2();
-		// Webcam.set({
-		// 	width: 320,
-		// 	height: 240,
-		// 	image_format: 'jpeg',
-		// 	jpeg_quality: 90
-		// });
-		// Webcam.attach( '#my_camera'  );
+		Webcam.set({
+			width: 320,
+			height: 240,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach( '#my_camera'  );
     
     $('#today').on('click',function(){
         var date = new Date();

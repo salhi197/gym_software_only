@@ -128,14 +128,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           </a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <li><a href="<?php echo e(route('stats')); ?>" class="dropdown-item"><?php echo e(trans('main.statistique')); ?> </a></li>
+                        <?php if(Auth::user()->isadmin == 1): ?>
+
+<li><a href="<?php echo e(route('stats')); ?>" class="dropdown-item"><?php echo e(trans('main.statistique')); ?> </a></li>
             <li><a href="<?php echo e(route('setting.index')); ?>" class="dropdown-item">Paramètres </a></li>
             <li><a href="<?php echo e(route('versement.index')); ?>" class="dropdown-item">Versement </a></li>
-            <li><a href="<?php echo e(route('presence.index')); ?>" class="dropdown-item">Présences </a></li>
+            
             <li><a href="<?php echo e(route('rapport')); ?>" class="dropdown-item"><?php echo e(trans('main.rapport_inscriptions')); ?> </a></li>
             <li><a href="<?php echo e(route('libres')); ?>" class="dropdown-item"> <?php echo e(trans('main.rapport_seance_libre')); ?>  </a></li>
             <li><a href="<?php echo e(route('assurances')); ?>" class="dropdown-item"><?php echo e(trans('main.rapport_assurance')); ?> </a></li>
             <li><a href="<?php echo e(route('decharge.index')); ?>" class="dropdown-item"><?php echo e(trans('main.charges')); ?>  </a></li>
+
+                      
+                        <?php endif; ?>
+            <li><a href="<?php echo e(route('presence.index')); ?>" class="dropdown-item">Présences </a></li>
             <!-- <li><a href="<?php echo e(route('setting.index')); ?>" class="dropdown-item">Paramètres </a></li> -->
 
 
@@ -264,7 +270,7 @@ $(window).on("load",function(){
             toastr.error('Carte Non valide')
             $('#input_id').val("")
           }else{
-            window.location.href = 'http://localhost/gym2/membre/edit/'+number;
+            window.location.href = 'http://localhost/gymaccess/membre/compte/'+number;
           }
       }
   });

@@ -1,0 +1,1 @@
+php C:\wamp64\www\gymaccess\artisan backup:run --only-db

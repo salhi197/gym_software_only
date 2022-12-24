@@ -16,7 +16,7 @@ use App\Setting;
                         <?php echo csrf_field(); ?>
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>
                                         Communication Port Com:
@@ -86,7 +86,12 @@ use App\Setting;
                                         Sauvgarder Les Données
                                     </a>
                                 </div>
-
+<!-- 
+                                <div class="form-group">
+                                    <a href="<?php echo e(route('backup')); ?>" class="btn  bubbly-button">
+                                        Sauvgarder Les Données
+                                    </a>
+                                </div> -->
 
 
                             </div>

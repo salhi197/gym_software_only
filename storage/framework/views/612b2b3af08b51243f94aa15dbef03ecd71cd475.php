@@ -13,8 +13,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
           <h1 class="m-0 text-white"><?php echo e(trans('main.Nombre Total')); ?> : <?php echo e(count($membres)); ?><h1>
-          <h1 class="m-0 text-white"><?php echo e(trans('main.Nombre Total')); ?> Homme : <?php echo e(count($membres)); ?><h1>
-          <h1 class="m-0 text-white"><?php echo e(trans('main.Nombre Total')); ?> Femme: <?php echo e(count($membres)); ?><h1>
+          <h1 class="m-0 text-white"><?php echo e(trans('main.Nombre Total')); ?> Homme : <?php echo e(count($hommes)); ?><h1>
+          <h1 class="m-0 text-white"><?php echo e(trans('main.Nombre Total')); ?> Femme: <?php echo e(count($femmes)); ?><h1>
           </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -101,10 +101,10 @@
                         className: 'action-buttons',
                         orderable: false,
                         mRender: function (data, type, row) {
-                            var view = '<a href="/gym2/membre/membre/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Profile")); ?> </a>';
-                            view += ' <a href="/gym2/membre/edit/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Modifier")); ?> <i class="fa fa-edit"></i></a>';
+                            var view = '<a href="/gymaccess/membre/membre/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Profile")); ?> </a>';
+                            view += ' <a href="/gymaccess/membre/edit/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Modifier")); ?> <i class="fa fa-edit"></i></a>';
                             <?php if(Auth::user()->isadmin==1): ?>
-                            view += ' <a href="/gym2/membre/destroy/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Supprimer")); ?> <i class="fa fa-trash"></i></a>';
+                            view += ' <a href="/gymaccess/membre/destroy/' + row.matricule + ' " class="btn bubbly-button text-white"><?php echo e(trans("main.Supprimer")); ?> <i class="fa fa-trash"></i></a>';
 
                             <?php endif; ?>
                             return view

@@ -20,7 +20,7 @@ use App\Setting;
                         @csrf
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>
                                         Communication Port Com:
@@ -90,7 +90,12 @@ use App\Setting;
                                         Sauvgarder Les Données
                                     </a>
                                 </div>
-
+<!-- 
+                                <div class="form-group">
+                                    <a href="{{route('backup')}}" class="btn  bubbly-button">
+                                        Sauvgarder Les Données
+                                    </a>
+                                </div> -->
 
 
                             </div>

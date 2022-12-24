@@ -136,6 +136,7 @@ class SettingController extends Controller
 
     public function backup()
     {
+
         exec('php C:\wamp64\www\gymaccess\artisan backup:run --only-db');   
         return redirect()->route('setting.index')->with('success', 'Sauvgarde Terminé');   
     

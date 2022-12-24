@@ -92,10 +92,14 @@ class MembreController extends Controller
     public function index()
     {
         $membres = Membre::orderBy('id', 'DESC')->get();
+        
+        $hommes = Membre::where('sexe', 'homme')->get();
+        $femmes = Membre::where('sexe', 'femme')->get();
+
         $abonnements = Abonnement::all();
         // $coachs = User::where('grade',3)->get();
 
-        return view('membres.index',compact('membres','abonnements'));
+        return view('membres.index',compact('membres','abonnements','hommes','femmes'));
     }
 
 
@@ -220,7 +224,7 @@ class MembreController extends Controller
         // ::find($['inscription']);
         $inscription->debut=$request['debut'];
         $inscription->sexe=$request['sexe'];
-        $inscription->type=$request['type'];
+        // $inscription->type=$request['type'];
         $activities = $request->input('activities');
         $inscription->activities=json_encode($activities);
 
@@ -230,6 +234,7 @@ class MembreController extends Controller
         $inscription->nbsseance=$request['nbrmois']*4*json_decode($request['abonnement'])->nbrsemaine;
         $inscription->reste=$request['nbrmois']*4*json_decode($request['abonnement'])->nbrsemaine;
         
+
         $inscription->membre=$membre->id;
         $inscription->abonnement=json_decode($request['abonnement'])->id;
         $inscription->etat=1;
@@ -261,7 +266,7 @@ class MembreController extends Controller
         $dompdf->setPaper('A4');
         $dompdf->render();
         
-        $dompdf->stream("bulletin.pdf", array("Attachment" => false));
+        // $dompdf->stream("bulletin.pdf", array("Attachment" => false));
 
         
         return redirect()->route('membre.create')->with('success', ' inséré avec succés ');        
@@ -298,7 +303,9 @@ class MembreController extends Controller
         if(is_null($membre)){
             return redirect()->route('home')->with('success', ' Carte n\'exsite pas  ');        
         }
-        $inscription = $membre->getLastInscription();//Inscription::where(['membre'=>$membre->id,'etat'=>1])->first();
+        $inscription = $membre->getLastInscription();
+// dd($inscription);
+        //Inscription::where(['membre'=>$membre->id,'etat'=>1])->first();
         if($inscription->reste!=0){
             $inscription->reste = $inscription->reste - 1;
         }
@@ -434,7 +441,7 @@ class MembreController extends Controller
         $inscription = Inscription::find($request['inscription_id']);
         $inscription->debut=$request['debut'];
         $inscription->remarque=$request['remarque'];
-        $inscription->type=$request['type'];
+        $inscription->sexe=$request['sexe'];
         $activities = $request->input('activities');
         $inscription->activities=json_encode($activities);
 

@@ -124,14 +124,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
           </a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-            <li><a href="{{route('stats')}}" class="dropdown-item">{{trans('main.statistique')}} </a></li>
+                        @if(Auth::user()->isadmin == 1)
+
+<li><a href="{{route('stats')}}" class="dropdown-item">{{trans('main.statistique')}} </a></li>
             <li><a href="{{route('setting.index')}}" class="dropdown-item">Paramètres </a></li>
             <li><a href="{{route('versement.index')}}" class="dropdown-item">Versement </a></li>
-            <li><a href="{{route('presence.index')}}" class="dropdown-item">Présences </a></li>
+            
             <li><a href="{{route('rapport')}}" class="dropdown-item">{{trans('main.rapport_inscriptions')}} </a></li>
             <li><a href="{{route('libres')}}" class="dropdown-item"> {{trans('main.rapport_seance_libre')}}  </a></li>
             <li><a href="{{route('assurances')}}" class="dropdown-item">{{trans('main.rapport_assurance')}} </a></li>
             <li><a href="{{route('decharge.index')}}" class="dropdown-item">{{trans('main.charges')}}  </a></li>
+
+                      
+                        @endif
+            <li><a href="{{route('presence.index')}}" class="dropdown-item">Présences </a></li>
             <!-- <li><a href="{{route('setting.index')}}" class="dropdown-item">Paramètres </a></li> -->
 
 
@@ -259,7 +265,7 @@ $(window).on("load",function(){
             toastr.error('Carte Non valide')
             $('#input_id').val("")
           }else{
-            window.location.href = 'http://localhost/gym2/membre/edit/'+number;
+            window.location.href = 'http://localhost/gymaccess/membre/compte/'+number;
           }
       }
   });

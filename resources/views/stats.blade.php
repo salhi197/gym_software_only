@@ -5,7 +5,7 @@
                     <div class="card-header">                
                     </div>
                 </div>
-                <div class="card-group">
+                    <div class="card-group">
                         <form method="post" action="{{route('stats.filter')}}">                                                    
                             @csrf
                             <div class="row">
@@ -20,7 +20,7 @@
                                 </div>
 
 
-                                <div class="col-md-2" >
+                                <div class="col-md-3" >
                                     <label class="m-0 text-white" >Caissier:</label><br>
                                     <select class="customselect" id="user" name="user">
                                         <option value="" >Séléctionner un user:</option>
@@ -33,7 +33,7 @@
 
                                 </div>
 
-                                <div class="col-md-2" >
+                                <div class="col-md-3" >
                                     <label class="m-0 text-white" >Type:</label><br>
                                     <select class="customselect" id="sexe" name="sexe">
                                     <option value="" >Séléctionner un type:</option>
@@ -43,17 +43,32 @@
 
                                 </div>
 
-                                <div class="col-md-4" style="padding:35px;">
+                                <div class="col-md-2" style="padding:35px;">
                                     <button type="submit" class="row btn bubbly-button" >
                                         {{ trans('main.Filter') }}
                                     </button>                                                                                                        
                                 </div>
                         </form>
                 </div> 
-               <div class="card mb-4">
-                        <div class="card-group table1">
-                                    
-                    <table class="table table-striped">
+               
+        </div>
+
+
+
+                        <div class="card ">
+                            <div class="card-body table1">
+                                <div class="row text-right">
+                                    <div class="col-md-3">
+                                    </div>
+                                </div>
+                                <br>
+
+
+                                
+                                
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
                       <thead>
                         <tr>
                           <th scope="col">{{ trans('main.Type') }}</th>
@@ -105,12 +120,9 @@
                         </tr>
                       </tbody>
                     </table>
-
-                                    
-                    </div>
-                    
-                </div> 
-        </div>
+                                </div>
+                            </div>
+                        </div>
 
 
 @endsection

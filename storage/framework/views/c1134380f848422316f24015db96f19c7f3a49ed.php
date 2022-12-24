@@ -1,8 +1,4 @@
-@extends('layouts.master')
-
-
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="container-fluid" >
                         <div class="row">
@@ -12,14 +8,14 @@
                                         <h3 class="font-weight-light my-4"> </h3>
                                         <div class="row">
                                             <div class="col-md-1">
-                                                <a href="{{route('inscription.presence',['inscription'=>$inscription->id])}}" style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm">
+                                                <a href="<?php echo e(route('inscription.presence',['inscription'=>$inscription->id])); ?>" style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm">
                                                     <i class="fa fa-list" style="font-size:40px;" ></i>
                                                 </a>
                                                 <label class="text-center">Présences</label>
                                             </div>
 
                                             <div class="col-md-1">
-                                                <a href="{{route('membre.versements',['inscription'=>$inscription->id])}}" style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm">
+                                                <a href="<?php echo e(route('membre.versements',['inscription'=>$inscription->id])); ?>" style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm">
                                                     <i class="fa fa-list" style="font-size:40px;" ></i>
                                                 </a>
                                                 <label class="text-center">Liste des Versements</label>
@@ -44,7 +40,7 @@
                                             </div>
                                             
                                             <div class="col-md-1" >
-                                                <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="{{route('membre.inscriptions',['membre'=>$membre->id])}}" >
+                                                <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="<?php echo e(route('membre.inscriptions',['membre'=>$membre->id])); ?>" >
                                                     <i class="fa fa-list" style="font-size:40px;" aria-hidden="true"></i>
                                                 </a>
                                                 <label class="text-center" >Informations inscriptions </label>
@@ -77,38 +73,42 @@
 
                                     <div class="card-header">
                                         <h1 class="m-0 text-white"> Modifier : 
-                                            {{$membre->nom ?? ''}} {{$membre->prenom ?? ''}}
+                                            <?php echo e($membre->nom ?? ''); ?> <?php echo e($membre->prenom ?? ''); ?>
+
                                         </h1>
                                         
-                                        @if($inscription->abonnement == 1)
+                                        <?php if($inscription->abonnement == 1): ?>
                                         <h1 class="m-0 text-white">
                                             Accées Libre                                     
                                         </h1>
-                                        @else
+                                        <?php else: ?>
                                         <h1 class="m-0 text-white">
-                                            Séances Restantes : {{$inscription->reste ?? ''}}
+                                            Séances Restantes : <?php echo e($inscription->reste ?? ''); ?>
+
                                         </h1>
-                                        @endif
-                                        @if($inscription->total-$inscription->versement!=0)
+                                        <?php endif; ?>
+                                        <?php if($inscription->total-$inscription->versement!=0): ?>
                                             <h1 class="m-0 text-white">
-                                                Reste à payé : {{$inscription->total-$inscription->versement ?? ''}} DA
+                                                Reste à payé : <?php echo e($inscription->total-$inscription->versement ?? ''); ?> DA
                                             </h1>
-                                        @endif
+                                        <?php endif; ?>
                                         <h1 class="m-0 text-white">
-                                            Début : {{$inscription->debut ?? ''}}
+                                            Début : <?php echo e($inscription->debut ?? ''); ?>
+
                                         </h1>
 
                                         <h1 class="m-0 text-white">
-                                            Fin : {{$inscription->fin ?? ''}}
+                                            Fin : <?php echo e($inscription->fin ?? ''); ?>
+
                                         </h1>                                        
                                     </div>
                                     <div class="card-body table1" >
-                                        <form role="form" action="{{route('membre.update',['membre'=>$membre->id])}}" method="post" enctype="multipart/form-data">
+                                        <form role="form" action="<?php echo e(route('membre.update',['membre'=>$membre->id])); ?>" method="post" enctype="multipart/form-data">
                                         <input id="mydata" type="hidden" name="mydata" value=""/>
-                                        <input id="inscription_id" type="hidden" name="inscription_id" value="{{$inscription->id ?? ''}}"/>
+                                        <input id="inscription_id" type="hidden" name="inscription_id" value="<?php echo e($inscription->id ?? ''); ?>"/>
                                         
 
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
 
                                            
 
@@ -117,11 +117,11 @@
                                                     <div class="form-group">
 
                                                         <img id="blah" 
-                                                        @if(strlen($membre->photo)>0)
-                                                            src="{{asset($membre->photo)}}" 
-                                                        @else
+                                                        <?php if(strlen($membre->photo)>0): ?>
+                                                            src="<?php echo e(asset($membre->photo)); ?>" 
+                                                        <?php else: ?>
                                                             src="" 
-                                                        @endif
+                                                        <?php endif; ?>
                                                         
                                                         width="150px" alt="" />
                                                         <br>
@@ -140,7 +140,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Code de Matricule:</label>
-                                                        <input type="text" required value="{{$membre->matricule}}" name="matricule" class="form-control">
+                                                        <input type="text" required value="<?php echo e($membre->matricule); ?>" name="matricule" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
@@ -148,7 +148,7 @@
 
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" name="dm" value="1"
-                                                            @if($membre->dm ==1) checked @endif
+                                                            <?php if($membre->dm ==1): ?> checked <?php endif; ?>
                                                             id="flexCheckDefault">
                                                             <label class="form-check-label" style="font-size:30px;" for="flexCheckDefault">
                                                                 Dossier Médical
@@ -156,7 +156,7 @@
                                                         </div>
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" name="cn" value="1"
-                                                            @if($membre->cn ==1) checked @endif
+                                                            <?php if($membre->cn ==1): ?> checked <?php endif; ?>
                                                             id="flexCheckChecked" >
                                                             <label class="form-check-label" style="font-size:30px;" for="flexCheckChecked">
                                                                 Photocopie
@@ -166,40 +166,40 @@
 
                                                     <div class="form-group">
                                                         <label class="m-0 text-white" style="font-size:30px;">Numéro de la carte Nationale :</label>
-                                                        <input type="text" value="{{old('identite')}}" name="identite" class="form-control">
+                                                        <input type="text" value="<?php echo e(old('identite')); ?>" name="identite" class="form-control">
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label class="m-0 text-white" style="font-size:30px;">Type:</label>
                                                         <select class="customselect" class="" name="sexe">
-                                                        <option value="homme" @if($membre->sexe=="homme") selected @endif >Homme</option>
-                                                        <option value="femme" @if($membre->sexe=="femme") selected @endif >Femme</option>
+                                                        <option value="homme" <?php if($membre->sexe=="homme"): ?> selected <?php endif; ?> >Homme</option>
+                                                        <option value="femme" <?php if($membre->sexe=="femme"): ?> selected <?php endif; ?> >Femme</option>
 
                                                         </select>                                                        
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">nom</label>
-                                                        <input type="text" required value="{{$membre->nom}}" name="nom" class="form-control">
+                                                        <input type="text" required value="<?php echo e($membre->nom); ?>" name="nom" class="form-control">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Prénom</label>
-                                                        <input type="text" required value="{{$membre->prenom}}" name="prenom" class="form-control">
+                                                        <input type="text" required value="<?php echo e($membre->prenom); ?>" name="prenom" class="form-control">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Téléphone</label>
-                                                        <input type="text" value="{{$membre->telephone}}" name="telephone" class="form-control">
+                                                        <input type="text" value="<?php echo e($membre->telephone); ?>" name="telephone" class="form-control">
                                                     </div>
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Groupe Sanguin</label>
                                                         <select class="customselect" name="sang">
-                                                            <option @if($membre->sang=="A+") selected @endif value="A+">A+</option>
-                                                            <option @if($membre->sang=="A-") selected @endif value="A-">A-</option>
-                                                            <option @if($membre->sang=="B+") selected @endif value="B+">B+</option>
-                                                            <option @if($membre->sang=="B-") selected @endif value="B-">B-</option>
-                                                            <option @if($membre->sang=="O+") selected @endif value="O+">O+</option>
-                                                            <option @if($membre->sang=="O-") selected @endif value="O-">O-</option>
-                                                            <option @if($membre->sang=="AB+") selected @endif value="AB+">AB+</option>
-                                                            <option @if($membre->sang=="AB-") selected @endif value="AB-">AB-</option>
+                                                            <option <?php if($membre->sang=="A+"): ?> selected <?php endif; ?> value="A+">A+</option>
+                                                            <option <?php if($membre->sang=="A-"): ?> selected <?php endif; ?> value="A-">A-</option>
+                                                            <option <?php if($membre->sang=="B+"): ?> selected <?php endif; ?> value="B+">B+</option>
+                                                            <option <?php if($membre->sang=="B-"): ?> selected <?php endif; ?> value="B-">B-</option>
+                                                            <option <?php if($membre->sang=="O+"): ?> selected <?php endif; ?> value="O+">O+</option>
+                                                            <option <?php if($membre->sang=="O-"): ?> selected <?php endif; ?> value="O-">O-</option>
+                                                            <option <?php if($membre->sang=="AB+"): ?> selected <?php endif; ?> value="AB+">AB+</option>
+                                                            <option <?php if($membre->sang=="AB-"): ?> selected <?php endif; ?> value="AB-">AB-</option>
 
                                                         </select>
 
@@ -221,7 +221,7 @@
 <!-- Modal -->
 
 
-<!--                                                         <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="{{route('membre.minus',['membre'=>$membre->id])}}">
+<!--                                                         <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="<?php echo e(route('membre.minus',['membre'=>$membre->id])); ?>">
                                                             <i class="fa fa-minus " style="padding:20px;font-size:40px;"></i>
                                                         </a>
  -->
@@ -231,7 +231,7 @@
 
                                                 <div class ="col-sm-1">
                                                     <div class="form-group">
-                                                        <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="{{route('membre.plus',['membre'=>$membre->id])}}">
+                                                        <a style="border-radius: 25% 10%;" class="btn bubbly-button btn-sm" href="<?php echo e(route('membre.plus',['membre'=>$membre->id])); ?>">
                                                             <i class="fa fa-plus " style="padding:20px;font-size:40px;"></i>
                                                         </a>
                                                     </div>
@@ -241,13 +241,13 @@
                                                 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Nombre de mois:</label>
-                                                        <input type="number"  value="{{$inscription->nbrmois ?? 1}}" min="1" id="nbrmois" name="nbrmois" class="form-control">
+                                                        <input type="number"  value="<?php echo e($inscription->nbrmois ?? 1); ?>" min="1" id="nbrmois" name="nbrmois" class="form-control">
                                                     </div>
 
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Nombre de Séances Reste:</label>
-                                                        <input type="number"  value="{{$inscription->reste ?? 1}}" min="1" id="reste22" name="reste22" class="form-control">
+                                                        <input type="number"  value="<?php echo e($inscription->reste ?? 1); ?>" min="1" id="reste22" name="reste22" class="form-control">
                                                     </div>
 
 
@@ -259,24 +259,24 @@
                                                         <label style="font-size:30px;">Abonnement</label>
                                                         <select class="customselect" id="abonnement" name="abonnement">
                                                             <option >Séléctionner un Abonnement</option>
-                                                                @foreach($abonnements as $abonnement)
+                                                                <?php $__currentLoopData = $abonnements; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $abonnement): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                     <option 
-                                                                    @if($inscription->abonnement==$abonnement->id) selected @endif
-                                                                    value="{{$abonnement}}">{{$abonnement->label}}</option>
-                                                                @endforeach
+                                                                    <?php if($inscription->abonnement==$abonnement->id): ?> selected <?php endif; ?>
+                                                                    value="<?php echo e($abonnement); ?>"><?php echo e($abonnement->label); ?></option>
+                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Date début</label>
-                                                        <input type="date" id="debut"  value="{{$inscription->debut}}" name="debut" class="form-control">
+                                                        <input type="date" id="debut"  value="<?php echo e($inscription->debut); ?>" name="debut" class="form-control">
                                                     </div>
 
                                                     
 
                                                     <!-- <div class="form-group">
                                                         <label style="font-size:30px;">Remarque</label>
-                                                        <input id="remarque" type="text" value="{{$membre->remarque}}" name="remarque" class="form-control">
+                                                        <input id="remarque" type="text" value="<?php echo e($membre->remarque); ?>" name="remarque" class="form-control">
                                                     </div> -->
 
 
@@ -290,31 +290,31 @@
 
                                                     <!-- <div class="form-group">
                                                         <label style="font-size:30px;">Total</label>
-                                                        <input type="number" id="total" value="{{$membre->total}}" name="total" class="form-control" readonly>
+                                                        <input type="number" id="total" value="<?php echo e($membre->total); ?>" name="total" class="form-control" readonly>
                                                     </div> -->
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Remise</label>
-                                                        <input type="number" value="{{$inscription->remise ?? 0}}" id="remise" name="remise" class="form-control">
+                                                        <input type="number" value="<?php echo e($inscription->remise ?? 0); ?>" id="remise" name="remise" class="form-control">
                                                     </div>
 
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Total Final: </label>
-                                                        <input type="number" value="{{$inscription->total ?? 0}}" onkeydown="return false;" id="total" name="total" class="form-control">
+                                                        <input type="number" value="<?php echo e($inscription->total ?? 0); ?>" onkeydown="return false;" id="total" name="total" class="form-control">
                                                     </div>
 
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Versement:</label>
-                                                        <input type="number"  value="{{$inscription->versement ?? 0}}" id="versement" name="versement" class="form-control">
+                                                        <input type="number"  value="<?php echo e($inscription->versement ?? 0); ?>" id="versement" name="versement" class="form-control">
                                                     </div>
 
                                                     
 
                                                     <div class="form-group">
                                                         <label style="font-size:30px;">Reste:</label>
-                                                        <input type="number"  value="{{$inscription->total-$inscription->versement ?? 0}}" onkeydown="return false;" id="reste" name="reste" class="form-control">
+                                                        <input type="number"  value="<?php echo e($inscription->total-$inscription->versement ?? 0); ?>" onkeydown="return false;" id="reste" name="reste" class="form-control">
                                                     </div>
 
 
@@ -357,8 +357,8 @@
 
                     </div>
 
-                    @include('includes.modals.renouvler',['membre'=>$membre])
-                    @include('includes.modals.verser',['membre'=>$membre])
+                    <?php echo $__env->make('includes.modals.renouvler',['membre'=>$membre], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                    <?php echo $__env->make('includes.modals.verser',['membre'=>$membre], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
 <div class="modal fade" id="exampleModalMinus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -372,21 +372,21 @@
       </div>
       <div class="modal-body">
 
-        <form action="{{route('presence.entrer')}}" method="post">
-            @csrf
+        <form action="<?php echo e(route('presence.entrer')); ?>" method="post">
+            <?php echo csrf_field(); ?>
 
             <input type="hidden" class="form-control" 
                 name="membre"
-                value="{{$membre->id ?? ''}}" >
+                value="<?php echo e($membre->id ?? ''); ?>" >
             <input type="hidden" class="form-control" 
                 name="inscription"
-                value="{{$inscription->id ?? ''}}" >
+                value="<?php echo e($inscription->id ?? ''); ?>" >
 
             <div class="form-group">
                 <label class="form-label">Date Séance :  </label>
                 <input type="date" class="form-control" 
                 name="date_entrer"
-                value="{{date('Y-m-d')}}"
+                value="<?php echo e(date('Y-m-d')); ?>"
                 placeholder="" >
             </div>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -404,11 +404,11 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('scripts')
-<script src="{{asset('js/webcam.min.js')}}"></script>
+<?php $__env->startSection('scripts'); ?>
+<script src="<?php echo e(asset('js/webcam.min.js')); ?>"></script>
 
 <script>
 
@@ -448,7 +448,7 @@ $(window).keydown(function(event){
     if(event.keyCode == 13) {
         if($('#input_id').val().length >0){
           let number = parseInt($('#input_id').val(), 10);
-          let matricules = {!! json_encode(Config::get('matricules')) !!};
+          let matricules = <?php echo json_encode(Config::get('matricules')); ?>;
           //console.log(matricules);
           var res = false;
           matricules.map(function (matricule) {
@@ -627,6 +627,8 @@ $(window).keydown(function(event){
 });
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

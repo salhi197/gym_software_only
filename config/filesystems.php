@@ -111,9 +111,9 @@ return [
         ],
 
 
-        'partitionE' => [
+        'partitionG' => [
             'driver' => 'local',
-            'root'   => 'E:/',
+            'root'   => 'G:/',
         ],
 
 

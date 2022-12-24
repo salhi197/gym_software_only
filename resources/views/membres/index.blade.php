@@ -14,8 +14,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
           <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} : {{count($membres)}}<h1>
-          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Homme : {{count($membres)}}<h1>
-          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Femme: {{count($membres)}}<h1>
+          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Homme : {{count($hommes)}}<h1>
+          <h1 class="m-0 text-white">{{trans('main.Nombre Total')}} Femme: {{count($femmes)}}<h1>
           </div><!-- /.col -->
 
         </div><!-- /.row -->
@@ -102,10 +102,10 @@
                         className: 'action-buttons',
                         orderable: false,
                         mRender: function (data, type, row) {
-                            var view = '<a href="/gym2/membre/membre/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Profile")}} </a>';
-                            view += ' <a href="/gym2/membre/edit/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Modifier")}} <i class="fa fa-edit"></i></a>';
+                            var view = '<a href="/gymaccess/membre/membre/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Profile")}} </a>';
+                            view += ' <a href="/gymaccess/membre/edit/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Modifier")}} <i class="fa fa-edit"></i></a>';
                             @if(Auth::user()->isadmin==1)
-                            view += ' <a href="/gym2/membre/destroy/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Supprimer")}} <i class="fa fa-trash"></i></a>';
+                            view += ' <a href="/gymaccess/membre/destroy/' + row.matricule + ' " class="btn bubbly-button text-white">{{trans("main.Supprimer")}} <i class="fa fa-trash"></i></a>';
 
                             @endif
                             return view
